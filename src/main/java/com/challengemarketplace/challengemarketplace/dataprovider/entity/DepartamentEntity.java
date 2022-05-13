@@ -12,19 +12,14 @@ import javax.persistence.*;
 //@Setter
 @Entity
 @Table(name = "Departaments_Of_Marketplace")
-public class DepartamentEntity  {
+public class DepartamentEntity{
 
-    @Id
     @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id_Departament")
+    @Id
+    @Column(name = "IdDepartament")
     private Long idDepartament;
 
-
-
-
-    @Column(name = "Name_Departament" )
+    @Column(name = "NameDepartament")
     private String nameDepartament;
-
 }
-
