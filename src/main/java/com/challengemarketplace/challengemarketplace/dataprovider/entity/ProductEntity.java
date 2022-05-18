@@ -3,7 +3,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import javax.persistence.*;
 import java.io.Serializable;
-
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity

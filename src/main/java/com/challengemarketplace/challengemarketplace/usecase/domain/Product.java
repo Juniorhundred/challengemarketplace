@@ -1,10 +1,7 @@
 package com.challengemarketplace.challengemarketplace.usecase.domain;
 
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter
-@Setter
+import lombok.Data;
+@Data
 public class Product {
 
     private Long idProduct;
