@@ -1,11 +1,16 @@
 package com.challengemarketplace.challengemarketplace.dataprovider.entity;
+import com.challengemarketplace.challengemarketplace.usecase.domain.Product;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import javax.persistence.*;
 import java.io.Serializable;
 @Data
+@AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
+@Builder
 @Table(name ="Products")
 public class ProductEntity implements Serializable {
 
@@ -34,5 +39,7 @@ public class ProductEntity implements Serializable {
     private Boolean productOffered;
 
     @Column(name = "DiscountPorcentage")
-    private Double discountPorcentage;
+    private Integer discountPorcentage;
+
+
 }

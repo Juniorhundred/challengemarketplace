@@ -1,7 +1,9 @@
 package com.challengemarketplace.challengemarketplace.usecase.domain;
 
+import lombok.Builder;
 import lombok.Data;
 @Data
+@Builder
 public class Product {
 
     private Long idProduct;
@@ -11,5 +13,5 @@ public class Product {
     private Double price;
     private Boolean active;
     private Boolean ProductOffered;
-    private Double discountPorcentage;
+    private Integer discountPorcentage;
 }
