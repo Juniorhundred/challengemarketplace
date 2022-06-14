@@ -13,7 +13,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.BDDMockito.given;
 
 @ExtendWith(SpringExtension.class)
@@ -26,7 +25,7 @@ class ProductUseCaseImplTest {
     private ProductGateway productGateway;
 
     @Test
-    void testCreateProductSuccesful(){
+    void testCreateProductSuccesful() {
         Product productToBeCreated = mockProductRequest(100.00);
         Product productCreated = mockProductResponse();
 
@@ -42,16 +41,16 @@ class ProductUseCaseImplTest {
 
         assertNotNull(product);
         assertAll(
-                ()-> assertEquals(1L, product.getIdProduct()),
-                ()-> assertEquals("Iphone12", product.getNameProduct()),
-                ()-> assertEquals("16GB", product.getDescriptionProduct()),
-                ()-> assertEquals(100.00, product.getPrice())
+                () -> assertEquals(1L, product.getIdProduct()),
+                () -> assertEquals("Iphone12", product.getNameProduct()),
+                () -> assertEquals("16GB", product.getDescriptionProduct()),
+                () -> assertEquals(100.00, product.getPrice())
 
         );
     }
 
     @Test
-    void testProductNameDuplicitySuccesful(){
+    void testProductNameDuplicitySuccesful() {
         Product productToBeCreated = mockProductRequest(100.00);
 
         given(productGateway
@@ -60,28 +59,21 @@ class ProductUseCaseImplTest {
                         .of(mockProductResponse()));
 
         assertThrows(ValidationDuplicityNameException.class,
-                ()-> productUseCaseImpl.createProduct(productToBeCreated));
+                () -> productUseCaseImpl.createProduct(productToBeCreated));
     }
 
-
-
-
-//    @Test
-//    void ProductNameDuplicityUnsuccesfully(){
-//
-//    }
-
     @Test
-    void PriceZeroedOrNegativeSuccesful(){
+    void testPriceZeroedOrNegativeSuccesful() {
         Product productToBeCreated = mockProductRequest(-100.00);
-        assertThrows(CheckPriceError.class, ()-> productUseCaseImpl.createProduct(productToBeCreated));
+        assertThrows(CheckPriceError.class,
+                () -> productUseCaseImpl.createProduct(productToBeCreated));
     }
 
     @Test
-    void PriceZeroedOrNegativeSuccesfully(){
+    void testPriceZeroedOrNegativeSuccesfully() {
         Product productToBeCreated = mockProductRequest(0.00);
         assertThrows(CheckPriceError.class,
-                ()-> productUseCaseImpl.createProduct(productToBeCreated));
+                () -> productUseCaseImpl.createProduct(productToBeCreated));
 
     }
 

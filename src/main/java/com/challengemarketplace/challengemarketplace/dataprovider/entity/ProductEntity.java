@@ -1,17 +1,18 @@
 package com.challengemarketplace.challengemarketplace.dataprovider.entity;
-import com.challengemarketplace.challengemarketplace.usecase.domain.Product;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 @Builder
 @Table(name ="Products")
+@NoArgsConstructor
 public class ProductEntity implements Serializable {
 
     @EqualsAndHashCode.Include
@@ -32,14 +33,22 @@ public class ProductEntity implements Serializable {
     @Column(name = "PriceProduct")
     private Double priceProduct;
 
-    @Column(name = "UserActive")
-    private Boolean userActive;
+    @Column(name = "ProductActive")
+    private Boolean productActive;
 
     @Column(name = "ProductOffered")
     private Boolean productOffered;
 
     @Column(name = "DiscountPorcentage")
     private Integer discountPorcentage;
+
+    @ManyToMany
+    @JoinTable(
+            name = "Products_Departaments",
+            joinColumns = @JoinColumn(name = "IdProduct"),
+            inverseJoinColumns = @JoinColumn(name = "IdDepartament")
+    )
+    private List<DepartamentEntity> departaments = new ArrayList<>();
 
 
 }

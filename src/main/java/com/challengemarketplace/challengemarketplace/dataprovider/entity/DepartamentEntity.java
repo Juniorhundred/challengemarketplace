@@ -3,6 +3,9 @@ package com.challengemarketplace.challengemarketplace.dataprovider.entity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
@@ -12,9 +15,13 @@ public class DepartamentEntity{
     @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
+
     @Column(name = "IdDepartament")
     private Long idDepartament;
 
+
     @Column(name = "NameDepartament")
     private String nameDepartament;
+
+
 }
