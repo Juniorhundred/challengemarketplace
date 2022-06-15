@@ -30,7 +30,7 @@ class ProductDataProviderTest {
         ProductEntity productResponse = mockProductEntity();
 
         given(productRepository.findByName(produtoRequest.getNameProduct()))
-                .willReturn(Optional.of(produtoRequest));
+                .willReturn(Optional.of(productResponse));
 
         Optional<Product> product = productDataProvider.findByName(produtoRequest.getNameProduct());
 
