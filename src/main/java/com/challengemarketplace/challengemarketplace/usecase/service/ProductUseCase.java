@@ -5,6 +5,6 @@ import com.challengemarketplace.challengemarketplace.usecase.domain.Product;
 
 public interface ProductUseCase {
 
-    Product createProduct (Product product);
+    Product createProduct(Product product);
 
 }

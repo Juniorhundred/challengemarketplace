@@ -12,7 +12,7 @@ class ProductRequestMapperTest {
     void converterDomainEntitySuccessful() {
         Product mockProduct = mockProduct();
 
-        ProductEntity productEntity = ProductRequestMapper.converterDomainEntity(mockProduct);
+        ProductEntity productEntity = ProductRequestMapper.convertDomainEntity(mockProduct);
 
         assertNotNull(productEntity);
         assertAll(

@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface ProductGateway {
 
-    Optional<Product> findByName (String name);
+    Optional<Product> findByName(String name);
 
-    Product createProduct (Product product);
+    Product createProduct(Product product);
 }

@@ -1,21 +1,24 @@
 package com.challengemarketplace.challengemarketplace.dataprovider.entity;
+
 import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-@Data
+
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
+@Getter
+@Setter
 @Builder
-@Table(name ="Products")
+@Table(name = "Products")
 @NoArgsConstructor
 public class ProductEntity implements Serializable {
 
-    @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "IdProduct")
@@ -50,5 +53,16 @@ public class ProductEntity implements Serializable {
     )
     private List<DepartamentEntity> departaments = new ArrayList<>();
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ProductEntity that = (ProductEntity) o;
+        return idProduct.equals(that.idProduct);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(idProduct);
+    }
 }

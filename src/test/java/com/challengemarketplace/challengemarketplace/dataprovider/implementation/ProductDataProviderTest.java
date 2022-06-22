@@ -26,7 +26,7 @@ class ProductDataProviderTest {
 
     @Test
     void findByNameSuccessfull() {
-            Product produtoRequest = mockProduto();
+        Product produtoRequest = mockProduto();
         ProductEntity productResponse = mockProductEntity();
 
         given(productRepository.findByName(produtoRequest.getNameProduct()))

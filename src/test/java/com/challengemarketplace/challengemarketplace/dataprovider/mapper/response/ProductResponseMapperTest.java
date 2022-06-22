@@ -11,7 +11,7 @@ class ProductResponseMapperTest {
     @Test
     void converterEntityDomain() {
         ProductEntity mockProductEntity = mockProductEntity();
-        Product product = ProductResponseMapper.converterEntityDomain(mockProductEntity);
+        Product product = ProductResponseMapper.convertEntityDomain(mockProductEntity);
         assertNotNull(product);
         assertAll(
                 () -> assertEquals(1L, product.getIdProduct()),

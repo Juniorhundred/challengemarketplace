@@ -1,18 +1,20 @@
 package com.challengemarketplace.challengemarketplace.dataprovider.entity;
 
-import lombok.Data;
 import lombok.EqualsAndHashCode;
-import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+import javax.persistence.*;
+import java.util.Objects;
+
+@Getter
+@Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 @Table(name = "Departaments_Of_Marketplace")
-public class DepartamentEntity{
+public class DepartamentEntity {
 
-    @EqualsAndHashCode.Include
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
 
@@ -23,5 +25,16 @@ public class DepartamentEntity{
     @Column(name = "NameDepartament")
     private String nameDepartament;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DepartamentEntity that = (DepartamentEntity) o;
+        return idDepartament.equals(that.idDepartament);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(idDepartament);
+    }
 }

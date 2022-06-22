@@ -10,11 +10,11 @@ import lombok.Getter;
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class ProductModelRequest {
 
-        private String nameProduct;
-        private String descriptionProduct;
-        private String productBrand;
-        private Double price;
-        private Boolean active;
-        private Boolean ProductOffered;
-    }
+    private String nameProduct;
+    private String descriptionProduct;
+    private String productBrand;
+    private Double price;
+    private Boolean active;
+    private Boolean ProductOffered;
+}
 

@@ -5,7 +5,7 @@ import com.challengemarketplace.challengemarketplace.usecase.domain.Product;
 
 public class ProductRequestMapper {
 
-    public static Product converterProduct (ProductModelRequest productModelRequest) {
+    public static Product convertProduct(ProductModelRequest productModelRequest) {
 
         return Product.builder()
                 .nameProduct(productModelRequest.getNameProduct())

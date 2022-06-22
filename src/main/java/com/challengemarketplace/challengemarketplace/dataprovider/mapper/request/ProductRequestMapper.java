@@ -4,7 +4,7 @@ import com.challengemarketplace.challengemarketplace.dataprovider.entity.Product
 import com.challengemarketplace.challengemarketplace.usecase.domain.Product;
 
 public class ProductRequestMapper {
-    public static ProductEntity converterDomainEntity ( Product product){
+    public static ProductEntity convertDomainEntity(Product product) {
         return ProductEntity.builder()
                 .idProduct(product.getIdProduct())
                 .nameProduct(product.getNameProduct())

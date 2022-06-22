@@ -21,16 +21,16 @@ public class ProductDataProvider implements ProductGateway {
     @Override
     public Optional<Product> findByName(String name) {
         return productRepository.findByName(name)
-                .map(ProductResponseMapper::converterEntityDomain);
+                .map(ProductResponseMapper::convertEntityDomain);
     }
 
     @Override
     public Product createProduct(Product product) {
         try {
-            ProductEntity createByProduct = ProductRequestMapper.converterDomainEntity(product);
+            ProductEntity createByProduct = ProductRequestMapper.convertDomainEntity(product);
             ProductEntity productCreate = productRepository.save(createByProduct);
 
-            return ProductResponseMapper.converterEntityDomain(productCreate);
+            return ProductResponseMapper.convertEntityDomain(productCreate);
         } catch (Exception exception) {
             throw new ValidationDuplicityNameException(String.
                     format("O Produto '%s' consta como cadastrado no sistema", exception));
