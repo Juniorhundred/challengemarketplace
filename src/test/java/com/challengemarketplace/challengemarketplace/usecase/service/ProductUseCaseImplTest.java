@@ -25,7 +25,7 @@ class ProductUseCaseImplTest {
     private ProductGateway productGateway;
 
     @Test
-    void testCreateProductSuccesful() {
+    void testCreateProductSuccess() {
         Product productToBeCreated = mockProductRequest(100.00);
         Product productCreated = mockProductResponse();
 
@@ -50,7 +50,7 @@ class ProductUseCaseImplTest {
     }
 
     @Test
-    void testProductNameDuplicitySuccesful() {
+    void testProductNameDuplicitySuccess() {
         Product productToBeCreated = mockProductRequest(100.00);
 
         given(productGateway
@@ -63,14 +63,14 @@ class ProductUseCaseImplTest {
     }
 
     @Test
-    void testPriceZeroedOrNegativeSuccesful() {
+    void testPriceZeroOrNegativeSuccesful() {
         Product productToBeCreated = mockProductRequest(-100.00);
         assertThrows(CheckPriceError.class,
                 () -> productUseCaseImpl.createProduct(productToBeCreated));
     }
 
     @Test
-    void testPriceZeroedOrNegativeSuccesfully() {
+    void testPriceZeroOrNegativeSuccesfully() {
         Product productToBeCreated = mockProductRequest(0.00);
         assertThrows(CheckPriceError.class,
                 () -> productUseCaseImpl.createProduct(productToBeCreated));

@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ProductRequestMapperTest {
 
     @Test
-    void converterDomainEntitySuccessful() {
+    void converterDomainEntitySuccess() {
         Product mockProduct = mockProduct();
 
         ProductEntity productEntity = ProductRequestMapper.convertDomainEntity(mockProduct);

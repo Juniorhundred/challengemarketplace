@@ -25,7 +25,7 @@ class ProductDataProviderTest {
     private ProductRepository productRepository;
 
     @Test
-    void findByNameSuccessfull() {
+    void findByNameSuccess() {
         Product produtoRequest = mockProduto();
         ProductEntity productResponse = mockProductEntity();
 
@@ -49,7 +49,7 @@ class ProductDataProviderTest {
     }
 
     @Test
-    void createProductSuccessfull() {
+    void createProductSuccess() {
         ProductEntity productResponse = mockProductEntity();
         Product productRequest = mockProduto();
 

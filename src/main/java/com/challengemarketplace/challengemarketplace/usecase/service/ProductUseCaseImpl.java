@@ -26,7 +26,7 @@ public class ProductUseCaseImpl implements ProductUseCase {
     }
 
     private void validateProduct(Product productRequestDomain) {
-        validatePriceZeroedOrNegative(productRequestDomain);
+        validatePriceZeroOrNegative(productRequestDomain);
         ValidateDuplicationNameProduct(productRequestDomain);
     }
 
@@ -37,7 +37,7 @@ public class ProductUseCaseImpl implements ProductUseCase {
         });
     }
 
-    private void validatePriceZeroedOrNegative(Product productRequestDomain) {
+    private void validatePriceZeroOrNegative(Product productRequestDomain) {
         if (productRequestDomain.getPrice() <= 0) {
             throw new CheckPriceError(String.format("O preço '%s' não pode ser zerado ", productRequestDomain.getPrice()));
         }
