@@ -4,25 +4,30 @@ import com.challengemarketplace.challengemarketplace.usecase.domain.Product;
 import com.challengemarketplace.challengemarketplace.usecase.exceptions.CheckPriceError;
 import com.challengemarketplace.challengemarketplace.usecase.exceptions.ValidationDuplicityNameException;
 import com.challengemarketplace.challengemarketplace.usecase.gateway.ProductGateway;
-import lombok.Data;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
-@Data
 public class ProductUseCaseImpl implements ProductUseCase {
     private final ProductGateway productGateway;
 
     public ProductUseCaseImpl(ProductGateway productGateway) {
+
         this.productGateway = productGateway;
     }
 
-    @Override
     public Product createProduct(Product productRequestDomain) {
         validateProduct(productRequestDomain);
         productRequestDomain.setActive(true);
         productRequestDomain.setProductOffered(false);
         productRequestDomain.setDiscountPorcentage(0);
         return productGateway.createProduct(productRequestDomain);
+    }
+
+    @Override
+    public List<Product> findListProducts(Product product) {
+        return productGateway.listProducts(product);
     }
 
     private void validateProduct(Product productRequestDomain) {
@@ -32,8 +37,13 @@ public class ProductUseCaseImpl implements ProductUseCase {
 
 
     private void ValidateDuplicationNameProduct(Product productRequestDomain) {
-        productGateway.findByName(productRequestDomain.getNameProduct()).ifPresent(product -> {
-            throw new ValidationDuplicityNameException(String.format("O Produto '%s' consta como cadastrado no sistema", productRequestDomain.getNameProduct()));
+        productGateway
+                .findByName(productRequestDomain
+                        .getNameProduct())
+                .ifPresent(product -> {
+            throw new ValidationDuplicityNameException(
+                    String.format("O Produto '%s' consta como cadastrado no sistema", productRequestDomain
+                            .getNameProduct()));
         });
     }
 

@@ -10,7 +10,9 @@ import com.challengemarketplace.challengemarketplace.usecase.gateway.ProductGate
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Component
 @AllArgsConstructor
@@ -18,9 +20,10 @@ public class ProductDataProvider implements ProductGateway {
 
     private final ProductRepository productRepository;
 
+
     @Override
-    public Optional<Product> findByName(String name) {
-        return productRepository.findByName(name)
+    public Optional<Product> findByName (String nameProduct) {
+        return productRepository.findByNameProduct(nameProduct)
                 .map(ProductResponseMapper::convertEntityDomain);
     }
 
@@ -35,6 +38,14 @@ public class ProductDataProvider implements ProductGateway {
             throw new ValidationDuplicityNameException(String.
                     format("O Produto '%s' consta como cadastrado no sistema", exception));
         }
+    }
+
+
+    @Override
+    public List<Product> listProducts(Product product) {
+        return  productRepository.findAll().stream()
+                .map(ProductResponseMapper::convertEntityDomain)
+                .collect(Collectors.toList());
     }
 };
 

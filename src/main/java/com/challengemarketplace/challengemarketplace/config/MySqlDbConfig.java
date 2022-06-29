@@ -2,6 +2,6 @@ package com.challengemarketplace.challengemarketplace.config;
 
 import org.springframework.context.annotation.Configuration;
 
-@Configuration
+//@Configuration
 public class MySqlDbConfig {
 }

@@ -35,7 +35,8 @@ class ProductRequestMapperTest {
                 .descriptionProduct("16GB")
                 .productBrand("Apple")
                 .price(100.00)
-                .active(true).ProductOffered(false)
+                .active(true)
+                .ProductOffered(false)
                 .discountPorcentage(0)
                 .build();
     }
